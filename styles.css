@@ -38,7 +38,7 @@ form {
     justify-content: space-around;
     background-color: #46424D;
     margin: 0 30px;
-    padding: 30px 60px;
+    padding: 30px 100px;
     height: 700px;
 }
 .button-container {
@@ -50,17 +50,28 @@ form {
     border: 1.5px solid #fff;
     width: 15%;
 }
-
-
-
-
-
-.right-container {
-    height:95vh;
-    width: 30vw;
-    border-left: 4px solid #46424D;
+input {
+    background: transparent;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #fff;
+}
+.minutes-seconds-container {
+    display: flex;
+    justify-content: space-between;
+}
+.minutes-seconds-container > p {
+    width: 40%;
 }
 .button-icon {
     height: 25px;
     width: auto;
+}
+
+
+/* **Section right** */
+.right-container {
+    height:95vh;
+    width: 30vw;
+    border-left: 4px solid #46424D;
 }
