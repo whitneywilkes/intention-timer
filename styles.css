@@ -22,7 +22,13 @@ main {
     height: 95vh;
 }
 h2 {
-    width: 60vw;
+width: 60vw;
+margin: 30px 30px 15px 30px;
+font-size: 1.2em;
+}
+
+h2 > p {
+
 }
 /* **Section left** */
 .left-container, .right-container {
@@ -30,8 +36,9 @@ h2 {
 }
 
 .left-container {
-    width: 65vw; 
+    width: 65vw;
 }
+
 form {
     display: flex;
     flex-direction: column;
@@ -45,14 +52,25 @@ form {
     display: flex;
     justify-content: space-between;
 }
+
+button {
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
 .button-container > button {
     background: transparent;
     border: 1.5px solid #fff;
-    width: 15%;
+    width: 150px;
+    padding: 10px;
 }
+
+
+
 input {
     background: transparent;
     width: 100%;
+    height: 45px;
     border: none;
     border-bottom: 2px solid #fff;
 }
@@ -68,10 +86,20 @@ input {
     width: auto;
 }
 
+.start-activity-button {
+    color: #2b2733;
+    height: 40px;
+    margin-left: 70%;
+}
 
 /* **Section right** */
 .right-container {
     height:95vh;
     width: 30vw;
     border-left: 4px solid #46424D;
+}
+.right-container > p {
+    text-align: center;
+    line-height: 1.8em;
+    margin-top: 7%;
 }
