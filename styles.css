@@ -24,12 +24,10 @@ main {
 h2 {
 width: 60vw;
 margin: 30px 30px 15px 30px;
-font-size: 1.2em;
+font-size: 24px;
+color: #CBC9CF;
 }
 
-h2 > p {
-
-}
 /* **Section left** */
 .left-container, .right-container {
     float: left;
@@ -37,6 +35,8 @@ h2 > p {
 
 .left-container {
     width: 65vw;
+    font-size: 1.25em;
+    font-weight: 400;
 }
 
 form {
@@ -47,7 +47,14 @@ form {
     margin: 0 30px;
     padding: 30px 100px;
     height: 700px;
+    border-radius: 5px;
+    box-shadow: 5px 5px #26222d;
 }
+
+.select-category {
+    margin-bottom: -60px;
+}
+
 .button-container {
     display: flex;
     justify-content: space-between;
@@ -61,11 +68,10 @@ button {
 .button-container > button {
     background: transparent;
     border: 1.5px solid #fff;
-    width: 150px;
+    width: 175px;
     padding: 10px;
+    font-size: .8em;
 }
-
-
 
 input {
     background: transparent;
@@ -90,16 +96,18 @@ input {
     color: #2b2733;
     height: 40px;
     margin-left: 70%;
+    font-size: large;
+    font-weight: 400;
 }
-
 /* **Section right** */
 .right-container {
     height:95vh;
-    width: 30vw;
+    width: 33vw;
     border-left: 4px solid #46424D;
 }
 .right-container > p {
     text-align: center;
     line-height: 1.8em;
     margin-top: 7%;
+    color: #CBC9CF;
 }
