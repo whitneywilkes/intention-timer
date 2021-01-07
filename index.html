@@ -19,18 +19,18 @@
       <form>
         <p class="select-category"> Select a category:</p>
         <div class="button-container">
-          <button type="button" name="button"> <img class="button-icon" src="./assets/study.svg" alt="lightbulb"><br>Study</button>
-          <button type="button" name="button"><img class="button-icon" src="./assets/meditate.svg" alt="lotus flower"><br>Meditate</button>
-          <button type="button" name="button"><img class="button-icon" src="./assets/exercise.svg" alt="running shoe"><br>Exercise</button>
+          <button  class="button" id="study-button" type="button" name="button"> <img class="button-icon" id="study-icon" src="./assets/study.svg" alt="lightbulb"><br>Study</button>
+          <button class="button" id="meditate-button" type="button" name="button"><img class="button-icon" id="meditate-icon" src="./assets/meditate.svg" alt="lotus flower"><br>Meditate</button>
+          <button class="button" id="exercise-button" type="button" name="button"><img class="button-icon" id="exercise-icon" src="./assets/exercise.svg" alt="running shoe"><br>Exercise</button>
         </div>
         <p>What would you like to acomplish during this time?<br><input class="accomplish-input" type="text" name="" value=""></p>
         <div class="minutes-seconds-container">
-          <p>Minutes<br><input type="text" name="" value=""></p>
-          <p>Seconds<br><input type="text" name="" value=""></p>
+          <p>Minutes<br><input id="minutesInput" type="text" name="" value=""></p>
+          <p>Seconds<br><input id="secondsInput" type="text" name="" value=""></p>
         </div>
         <button class="start-activity-button" type="button" name="button">START ACTIVITY</button>
-      </section>
-    </form>
+      </form>
+    </section>
 
     <section class="right-container">
       <h2>Past Activities</h2>
@@ -39,7 +39,8 @@
 
   </main>
 
-</body><script type="text/javascript" src="./Activity.js"></script>
+</body>
+<script type="text/javascript" src="./Activity.js"></script>
 <script type="text/javascript" src="./main.js"></script>
 
 </html>

@@ -22,7 +22,7 @@ h1 {
 }
 main {
     background-color: #2b2733;
-    
+
 }
 h2 {
 
@@ -69,7 +69,7 @@ button {
     border: none;
     outline: none;
 }
-.button-container > button {
+.button {
     background: transparent;
     border: 1.5px solid #fff;
     width: 175px;
@@ -113,4 +113,18 @@ input {
     line-height: 1.8em;
     margin-top: 7%;
     color: #CBC9CF;
+}
+
+/* active button settings */
+.study-active {
+  border-color: #B3FD78;
+  color: #B3FD78;
+}
+.meditate-active {
+  border-color: #C278FD;
+  color: #C278FD;
+}
+.exercise-active {
+  border-color: #FD8078;
+  color: #FD8078;
 }
