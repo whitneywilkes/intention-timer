@@ -1,4 +1,5 @@
 //
+var timerContainer = document.querySelector(".minutes-seconds-container")
 var selectActivityButton = document.querySelector('.button-container');
 var accomplishInputField = document.querySelector('.accomplish-input');
 var minInputField = document.querySelector('#minutesInput');
@@ -12,6 +13,8 @@ var meditateButton = document.querySelector('#meditateButton');
 var exerciseButton = document.querySelector('#exerciseButton');
 
 //
+
+
 
 startActivityButton.addEventListener('click', startActivity);
 
@@ -30,13 +33,15 @@ selectActivityButton.addEventListener('click', function(event) {
   }
 });
 
-function startActivity() {
-  if (isNaN(Number(secInputField.value)) || isNaN(Number(minInputField.value))) {
-    console.log("try again") /* add error message below input field*/
-    return 
-  } else {
-    console.log("hiii")
+timerContainer.addEventListener('keydown', function(event) {
+  var invalidCharacters = ['e', '+', "-"];
+  if (invalidCharacters.includes(event.key)) {
+    event.preventDefault();
   }
+});
+
+function startActivity() {
+  
 }
 
 
