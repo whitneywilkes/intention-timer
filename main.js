@@ -38,6 +38,8 @@ function startActivity() {
     console.log("hiii")
   }
 }
+
+
 function resetButtons() {
   studyButton.classList.remove('study-active')
   studyIcon.src = "./assets/study.svg"
