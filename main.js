@@ -12,6 +12,9 @@ var meditateButton = document.querySelector('#meditateButton');
 var exerciseButton = document.querySelector('#exerciseButton');
 
 //
+
+startActivityButton.addEventListener('click', startActivity);
+
 selectActivityButton.addEventListener('click', function(event) {
   var button = event.target.id;
   resetButtons();
@@ -27,6 +30,14 @@ selectActivityButton.addEventListener('click', function(event) {
   }
 });
 
+function startActivity() {
+  if (isNaN(Number(secInputField.value)) || isNaN(Number(minInputField.value))) {
+    console.log("try again") /* add error message below input field*/
+    return 
+  } else {
+    console.log("hiii")
+  }
+}
 function resetButtons() {
   studyButton.classList.remove('study-active')
   studyIcon.src = "./assets/study.svg"
@@ -36,24 +47,10 @@ function resetButtons() {
   exerciseIcon.src = "./assets/exercise.svg"
 }
 
+
+
 // accomplishInputField.addEventListener('keypress', accomplishInput);
 // minSecInputField.addEventListener('keypress', inputTime)
-// startActivityButton.addEventListener('click', startActivity);
-
-// studyButton.addEventListener('click', selectActivity);
-// meditateButton.addEventListener('click', selectActivity);
-// exerciseButton.addEventListener('click', selectActivity);
-
-
-function selectActivity(event) {
-  //on click:
-  event.currentTarget.classList.add('study-active')
-  // if(event.target === studyButton){
-  // studyButton.classList.add('study-active')//update border and text color
-  //update icon to active version
-  // }
-}
-
 
 function accomplishInput() {
   alert('this is accomplishment to reach being input');
@@ -65,6 +62,8 @@ function inputTime() {
   alert('this is time being input');
 }
 
-function startActivity() {
-  alert('this is a start activity button');
-}
+// function startActivity() {
+//   alert('this is a start activity button');
+// }
+{/* <input id='numbersOnly' pattern='[0-9]+' type='text'> */}
+
