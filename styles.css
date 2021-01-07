@@ -133,3 +133,6 @@ input {
   -webkit-appearance: none; 
   margin: 0; 
 }
+.hidden {
+    display: none;
+}

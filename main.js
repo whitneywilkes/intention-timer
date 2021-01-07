@@ -14,6 +14,7 @@ var exerciseIcon = document.querySelector("#exercise-icon");
 var studyButton = document.querySelector("#studyButton");
 var meditateButton = document.querySelector("#meditateButton");
 var exerciseButton = document.querySelector("#exerciseButton");
+var defaultForm = document.querySelector('#defaultForm')
 //
 
 startActivityButton.addEventListener("click", startActivity);
@@ -56,6 +57,23 @@ function startActivity() {
     var activityMinutes = minInputField.value;
     var activitySeconds = secInputField.value;
     currentActivity = new Activity(activityCategory, activityDescription, activityMinutes, activitySeconds);
+    hide(defaultForm);
+  }
+// new function 
+// - change h2 innerText to Current Activity
+// - showId to currentActivityForm
+// - change h3 element to activityDescription = innerText 
+// - create timer from input values / toggle for form 
+// - create start button 
+// - make start button outline match category
+
+
+function show(variable) {
+  variable.classList.remove("hidden");
+};
+
+function hide(variable) {
+  variable.classList.add("hidden");
 }
 
 function resetButtons() {
