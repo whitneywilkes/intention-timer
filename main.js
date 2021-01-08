@@ -28,6 +28,10 @@ var timer = document.querySelector('#timerInsert');
 
 startActivityButton.addEventListener("click", startActivity);
 
+startButton.addEventListener("click", function() {
+  currentActivity.startTimer();
+});
+
 selectActivityButton.addEventListener("click", function(event) {
   var button = event.target.id;
   resetButtons();
@@ -78,7 +82,7 @@ function startActivity() {
 // new function
 function showTimer() {
   show(startActivityForm);
-  timer.innerText = currentActivity.startTimer();
+  timer.innerText = `${currentActivity.minutes}:${currentActivity.seconds}`;
   activityHeader.innerText = 'Current Activity';
   userDescriptionInput.innerText = currentActivity.description;
   // - create timer from input values / toggle for form

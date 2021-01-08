@@ -9,17 +9,14 @@ class Activity {
   };
   startTimer() {
   var minutes = this.minutes;
-  var seconds = this.seconds % 60;
-
+  var seconds = this.seconds;
+  
     setInterval(function() {
   console.log(minutes)
   console.log(seconds)
-    if (seconds < 10) {
-      seconds = `0${seconds}`;
-    };
     seconds--
+    timer.innerText = `${minutes}:${seconds}`;
   }, 1000)
-  return `${minutes}:${seconds}`;
 }
 
   markComplete() {
@@ -28,4 +25,3 @@ class Activity {
   saveToStorage() {
   };
 };
-
