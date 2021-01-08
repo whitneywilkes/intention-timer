@@ -7,9 +7,20 @@ class Activity {
     this.completed = false;
     this.id = Date.now();
   };
-
   startTimer() {
-  };
+  var minutes = this.minutes;
+  var seconds = this.seconds % 60;
+
+    setInterval(function() {
+  console.log(minutes)
+  console.log(seconds)
+    if (seconds < 10) {
+      seconds = `0${seconds}`;
+    };
+    seconds--
+  }, 1000)
+  return `${minutes}:${seconds}`;
+}
 
   markComplete() {
   };
@@ -17,3 +28,4 @@ class Activity {
   saveToStorage() {
   };
 };
+

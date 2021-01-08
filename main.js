@@ -24,7 +24,7 @@ var descriptionError = document.querySelector('#descriptionError');
 var minutesError = document.querySelector('#minutesError');
 var secondsError = document.querySelector('#secondsError');
 var errorMessages = document.querySelectorAll('.error-message');
-
+var timer = document.querySelector('#timerInsert');
 
 startActivityButton.addEventListener("click", startActivity);
 
@@ -74,9 +74,11 @@ function startActivity() {
   hide(defaultForm);
   showTimer();
 }
+
 // new function
 function showTimer() {
   show(startActivityForm);
+  timer.innerText = currentActivity.startTimer();
   activityHeader.innerText = 'Current Activity';
   userDescriptionInput.innerText = currentActivity.description;
   // - create timer from input values / toggle for form
@@ -88,6 +90,7 @@ function showTimer() {
     startButton.classList.add('exercise-active')
   }
 }
+
 
 function checkForErrors() {
   hideErrorMessages();
@@ -130,13 +133,13 @@ function resetButtons() {
 // accomplishInputField.addEventListener('keypress', accomplishInput);
 // minSecInputField.addEventListener('keypress', inputTime)
 
-function accomplishInput() {
-  alert("this is accomplishment to reach being input");
-}
+// function accomplishInput() {
+//   alert("this is accomplishment to reach being input");
+// }
 
-function inputTime() {
-  alert("this is time being input");
-}
+// function inputTime() {
+//   alert("this is time being input");
+// }
 
 // function startActivity() {
 //   alert('this is a start activity button');
