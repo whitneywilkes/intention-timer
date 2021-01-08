@@ -101,6 +101,12 @@ input {
     border: none;
     border-bottom: 2px solid #fff;
 }
+
+.error-message {
+  margin-top: -40px;
+  color: #EFB7EC;
+}
+
 .minutes-seconds-container {
     display: flex;
     justify-content: space-between;
@@ -112,6 +118,12 @@ input {
 .button-icon {
     height: 25px;
     width: auto;
+}
+
+.warning-icon {
+  height: 15px;
+  width: auto;
+  padding-right: 6px;
 }
 
 .start-activity-button {
