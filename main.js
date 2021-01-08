@@ -19,6 +19,12 @@ var activityHeader = document.querySelector('#activityType');
 var startActivityForm = document.querySelector('#startActivityForm')
 var userDescriptionInput = document.querySelector('#userDescriptionInput')
 var startButton = document.querySelector('.start-button');
+var categoryError = document.querySelector('#categoryError');
+var descriptionError = document.querySelector('#descriptionError');
+var minutesError = document.querySelector('#minutesError');
+var secondsError = document.querySelector('#secondsError');
+var errorMessages = document.querySelectorAll('.error-message');
+
 
 startActivityButton.addEventListener("click", startActivity);
 
@@ -53,9 +59,13 @@ function findButton() {
       return activityButtons[i].value;
     }
   }
+  return false;
 }
 
 function startActivity() {
+  if (checkForErrors()) {
+    return;
+  };
   var activityCategory = findButton();
   var activityDescription = accomplishInputField.value;
   var activityMinutes = minInputField.value;
@@ -76,6 +86,27 @@ function showTimer() {
     startButton.classList.add('meditate-active')
   } else if (currentActivity.category === 'Exercise') {
     startButton.classList.add('exercise-active')
+  }
+}
+
+function checkForErrors() {
+  hideErrorMessages();
+  var inputs = [accomplishInputField.value, minInputField.value, secInputField.value]
+  if (!findButton()) {
+    show(categoryError);
+    return true;
+  }
+  for(var i=0; i < inputs.length; i++) {
+    if(inputs[i].length === 0) {
+      show(errorMessages[i+1])
+      return true;
+    }
+  }
+}
+
+function hideErrorMessages() {
+  for(var i=0; i < errorMessages.length; i++) {
+    hide(errorMessages[i]);
   }
 }
 
