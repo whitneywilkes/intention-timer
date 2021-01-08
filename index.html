@@ -15,7 +15,7 @@
   </header>
   <main>
     <section class="left-container">
-      <h2>New Activity</h2>
+      <h2 id="activityType">New Activity</h2>
       <form id="defaultForm">
         <p class="select-category"> Select a category:</p>
         <div class="button-container">
@@ -29,6 +29,11 @@
           <p>Seconds<br><input class="timer-input" id="secondsInput" type="number" name="" value=""></p>
         </div>
         <button class="start-activity-button" type="button" name="button">START ACTIVITY</button>
+      </form>
+      <form id="startActivityForm" class="hidden">
+        <h3 id="userDescriptionInput"></h3>
+        <p>timer</p>
+        <button class="start-button" type="button" name="button">START</button>
       </form>
     </section>
 

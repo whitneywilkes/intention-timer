@@ -54,6 +54,24 @@ form {
     box-shadow: 5px 5px #26222d;
 }
 
+#startActivityForm {
+  justify-content: center;
+  align-items: center;
+}
+
+h3 {
+  text-align: center;
+}
+
+.start-button {
+  border-radius: 50%;
+  background: transparent;
+  height: 200px;
+  width: 200px;
+  border: 2px solid white;
+  color: #fff !important;
+}
+
 .select-category {
     margin-bottom: -40px;
 }
@@ -128,10 +146,10 @@ input {
   border-color: #FD8078;
   color: #FD8078;
 }
-.timer-input::-webkit-inner-spin-button, 
-.timer-input::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+.timer-input::-webkit-inner-spin-button,
+.timer-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 .hidden {
     display: none;
