@@ -109,8 +109,7 @@ function checkForErrors() {
   if (!findButton()) {
     removeClass(categoryError);
     return true;
-  }
-  if (inputs[2] >= 60) {
+  } else if (inputs[2] >= 60 || parseInt(inputs[1]) === 0 && parseInt(inputs[2]) === 0) {
     removeClass(errorMessages[3])
     return true
   }

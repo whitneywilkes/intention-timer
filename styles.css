@@ -147,6 +147,16 @@ input {
     font-size: large;
     font-weight: 400;
 }
+
+.log-button {
+    color: #2b2733;
+    height: 40px;
+    width: 225px;
+    font-size: large;
+    font-weight: 400;
+    margin-top: 35px;
+}
+
 /* **Section right** */
 .right-container {
     width: 35%;
