@@ -111,7 +111,7 @@ function checkForErrors() {
     return true;
   }
   if (inputs[2] >= 60) {
-     removeClass(errorMessages[3])
+    removeClass(errorMessages[3])
     return true
   }
   for(var i=0; i < inputs.length; i++) {
@@ -144,3 +144,4 @@ function resetButtons() {
   removeClass(exerciseButton, "exercise-active");
   exerciseIcon.src = "./assets/exercise.svg";
 }
+
