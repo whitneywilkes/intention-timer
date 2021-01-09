@@ -197,7 +197,8 @@ article {
   margin-bottom: 25px;
   border-radius: 5px;
   padding: 2%;
-  /* border-right: 5px solid red; */
+  display: flex;
+  justify-content: space-between;
 }
 
 .card-container {
@@ -206,16 +207,6 @@ article {
   align-items: center;
 }
 
-article:after {
-  content: "";
-  right: 3px;
-  top: 0;
-  width: 3px;
-  height: 50%;
-  color: red;
-  position: absolute;
-  z-index: 100;
-}
 
 .card-title {
   font-weight: 400;
@@ -224,4 +215,20 @@ article:after {
 .card-description {
   font-weight: 300;
   font-size: 0.9em;
+}
+
+.card-category-indicator {
+  height: 30px;
+  width: 3px;
+  padding: 0;
+}
+
+.study-pipe {
+  background-color: #B3FD78;
+}
+.meditate-pipe {
+  background-color: #C278FD;
+}
+.exercise-pipe {
+  background-color: #FD8078;
 }

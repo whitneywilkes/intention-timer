@@ -88,12 +88,21 @@ function showTimer() {
   fixTime(currentActivity.minutes, currentActivity.seconds)
   activityHeader.innerText = 'Current Activity';
   userDescriptionInput.innerText = currentActivity.description;
-  if (currentActivity.category === 'Study') {
-    startButton.classList.add('study-active')
-  } else if (currentActivity.category === 'Meditate') {
-    startButton.classList.add('meditate-active')
-  } else if (currentActivity.category === 'Exercise') {
-    startButton.classList.add('exercise-active')
+  changeActivityColor(startButton, 'Study')
+  changeActivityColor(startButton, 'Meditate')
+  changeActivityColor(startButton, 'Exercise')
+  // if (currentActivity.category === 'Study') {
+  //   startButton.classList.add('study-active')
+  // } else if (currentActivity.category === 'Meditate') {
+  //   startButton.classList.add('meditate-active')
+  // } else if (currentActivity.category === 'Exercise') {
+  //   startButton.classList.add('exercise-active')
+  // }
+}
+
+function changeActivityColor(element, category) {
+  if (currentActivity.category === category) {
+    addClass(element, `${category.toLowerCase()}-active`)
   }
 }
 
@@ -152,10 +161,20 @@ function resetButtons() {
 
 function displayCard() {
   addClass(defaultMessage);
+ var color = checkColor(currentActivity.category);
 
 cardContainer.innerHTML += `<article>
+  <div class="card-section">
  <p class="card-title">${currentActivity.category}</p>
  <p>${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</p>
  <p class="card-description">${currentActivity.description}</p>
+ </div>
+ <div class="card-section">
+   <button class="card-category-indicator ${color}"type="button" name="button"></button>
+ </div>
  </article>`
+}
+
+function checkColor(category) {
+  return `${category.toLowerCase()}-pipe`
 }
