@@ -22,10 +22,9 @@ h1 {
 }
 main {
     background-color: #2b2733;
-    
+
 }
 h2 {
-
 margin: 30px 30px 15px 30px;
 font-size: 24px;
 color: #CBC9CF;
@@ -55,8 +54,31 @@ form {
     box-shadow: 5px 5px #26222d;
 }
 
+#startActivityForm {
+  justify-content: unset;
+  align-items: center;
+
+}
+
+h3 {
+  color:#CBC9CF;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.start-button {
+  margin-top: 60px;
+  border-radius: 50%;
+  font-size: 1.2em;
+  background: transparent;
+  height: 225px;
+  width: 225px;
+  border: 3px solid white;
+  color:#CBC9CF !important;
+}
+
 .select-category {
-    margin-bottom: -40px;
+    margin-bottom: -30px;
 }
 
 .button-container {
@@ -69,7 +91,7 @@ button {
     border: none;
     outline: none;
 }
-.button-container > button {
+.button {
     background: transparent;
     border: 1.5px solid #fff;
     width: 175px;
@@ -84,6 +106,21 @@ input {
     border: none;
     border-bottom: 2px solid #fff;
 }
+.timer {
+    font-size: 3.25em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+.error-message {
+  margin-top: -27px;
+  color: #EFB7EC;
+  font-size: 0.7em;
+}
+#secondsError {
+    margin-left: 60%;
+}
+
 .minutes-seconds-container {
     display: flex;
     justify-content: space-between;
@@ -91,9 +128,16 @@ input {
 .minutes-seconds-container > p {
     width: 40%;
 }
+
 .button-icon {
     height: 25px;
     width: auto;
+}
+
+.warning-icon {
+  height: 15px;
+  width: auto;
+  padding-right: 6px;
 }
 
 .start-activity-button {
@@ -113,4 +157,26 @@ input {
     line-height: 1.8em;
     margin-top: 7%;
     color: #CBC9CF;
+}
+
+/* active button settings */
+.study-active {
+  border-color: #B3FD78;
+  color: #B3FD78;
+}
+.meditate-active {
+  border-color: #C278FD;
+  color: #C278FD;
+}
+.exercise-active {
+  border-color: #FD8078;
+  color: #FD8078;
+}
+.timer-input::-webkit-inner-spin-button,
+.timer-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.hidden {
+    display: none;
 }
