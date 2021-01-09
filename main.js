@@ -33,17 +33,17 @@ startButton.addEventListener("click", function() {
 });
 
 selectActivityButton.addEventListener("click", function(event) {
-  var button = event.target.id;
+  var button = event.target;
   resetButtons();
 
-  if (button === "studyButton") {
-    event.target.classList.add("study-active");
+  if (button.id === "studyButton") {
+    addClass(button, "study-active");
     studyIcon.src = "./assets/study-active.svg";
-  } else if (button === "meditateButton") {
-    event.target.classList.add("meditate-active");
+  } else if (button.id === "meditateButton") {
+    addClass(button, "meditate-active");
     meditateIcon.src = "./assets/meditate-active.svg";
-  } else if (button === "exerciseButton") {
-    event.target.classList.add("exercise-active");
+  } else if (button.id === "exerciseButton") {
+    addClass(button, "exercise-active");
     exerciseIcon.src = "./assets/exercise-active.svg";
   }
 });
@@ -54,8 +54,6 @@ timerContainer.addEventListener("keydown", function(event) {
     event.preventDefault();
   }
 });
-//if .class === studyButton --- apply active class
-//className.includes('active')
 
 function findButton() {
   for (var i = 0; i < activityButtons.length; i++) {
@@ -75,13 +73,13 @@ function startActivity() {
   var activityMinutes = minInputField.value;
   var activitySeconds = secInputField.value;
   currentActivity = new Activity(activityCategory, activityDescription, activityMinutes, activitySeconds);
-  hide(defaultForm);
+  addClass(defaultForm);
   showTimer();
 }
 
 // new function
 function showTimer() {
-  show(startActivityForm);
+  removeClass(startActivityForm);
   fixTime(currentActivity.minutes, currentActivity.seconds)
   activityHeader.innerText = 'Current Activity';
   userDescriptionInput.innerText = currentActivity.description;
@@ -109,16 +107,16 @@ function checkForErrors() {
   hideErrorMessages();
   var inputs = [accomplishInputField.value, minInputField.value, secInputField.value]
   if (!findButton()) {
-    show(categoryError);
+    removeClass(categoryError);
     return true;
   }
   if (inputs[2] >= 60) {
-    show(errorMessages[3])
+     removeClass(errorMessages[3])
     return true
   }
   for(var i=0; i < inputs.length; i++) {
     if(inputs[i].length === 0) {
-      show(errorMessages[i+1])
+      removeClass(errorMessages[i+1])
       return true;
     }
   }
@@ -126,23 +124,23 @@ function checkForErrors() {
 
 function hideErrorMessages() {
   for(var i=0; i < errorMessages.length; i++) {
-    hide(errorMessages[i]);
+    addClass(errorMessages[i]);
   }
 }
 
-function show(variable) {
-  variable.classList.remove("hidden");
+function removeClass(element, className) {
+  element.classList.remove(className || "hidden");
 };
 
-function hide(variable) {
-  variable.classList.add("hidden");
+function addClass(element, className) {
+  element.classList.add(className || "hidden");
 }
 
 function resetButtons() {
-  studyButton.classList.remove("study-active");
+  removeClass(studyButton, "study-active");
   studyIcon.src = "./assets/study.svg";
-  meditateButton.classList.remove("meditate-active");
+  removeClass(meditateButton, "meditate-active");
   meditateIcon.src = "./assets/meditate.svg";
-  exerciseButton.classList.remove("exercise-active");
+  removeClass(exerciseButton, "exercise-active");
   exerciseIcon.src = "./assets/exercise.svg";
 }
