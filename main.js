@@ -82,10 +82,9 @@ function startActivity() {
 // new function
 function showTimer() {
   show(startActivityForm);
-  timer.innerText = `${currentActivity.minutes}:${currentActivity.seconds}`;
+  fixTime(currentActivity.minutes, currentActivity.seconds)
   activityHeader.innerText = 'Current Activity';
   userDescriptionInput.innerText = currentActivity.description;
-  // - create timer from input values / toggle for form
   if (currentActivity.category === 'Study') {
     startButton.classList.add('study-active')
   } else if (currentActivity.category === 'Meditate') {
@@ -94,7 +93,17 @@ function showTimer() {
     startButton.classList.add('exercise-active')
   }
 }
-
+function fixTime(minutes, seconds) {
+  if (minutes < 10 && seconds < 10) {
+    timer.innerText = `0${minutes}:0${seconds}`
+  } else if (minutes < 10) {
+    timer.innerText = `0${minutes}:${seconds}`
+  } else if (seconds < 10) {
+    timer.innerText = `${minutes}:0${seconds}`
+  } else {
+    timer.innerText = `${minutes}:${seconds}`;
+  }
+}
 
 function checkForErrors() {
   hideErrorMessages();
@@ -102,6 +111,10 @@ function checkForErrors() {
   if (!findButton()) {
     show(categoryError);
     return true;
+  }
+  if (inputs[2] >= 60) {
+    show(errorMessages[3])
+    return true
   }
   for(var i=0; i < inputs.length; i++) {
     if(inputs[i].length === 0) {
@@ -133,29 +146,3 @@ function resetButtons() {
   exerciseButton.classList.remove("exercise-active");
   exerciseIcon.src = "./assets/exercise.svg";
 }
-
-// accomplishInputField.addEventListener('keypress', accomplishInput);
-// minSecInputField.addEventListener('keypress', inputTime)
-
-// function accomplishInput() {
-//   alert("this is accomplishment to reach being input");
-// }
-
-// function inputTime() {
-//   alert("this is time being input");
-// }
-
-// function startActivity() {
-//   alert('this is a start activity button');
-// }
-{
-  /* <input id='numbersOnly' pattern='[0-9]+' type='text'> */
-}
-
-// When the Start Activity button is clicked, the user should
-// no longer see the form, and instead see a timer clock.
-
-// The timer clock should display the user-provided minutes and seconds, as well as the description.
-
-// The category should not appear, but the outline of the circle
-// should match the color associated with the category.

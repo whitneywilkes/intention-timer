@@ -55,21 +55,26 @@ form {
 }
 
 #startActivityForm {
-  justify-content: center;
+  justify-content: unset;
   align-items: center;
+
 }
 
 h3 {
+  color:#CBC9CF;
   text-align: center;
+  margin-top: 20px;
 }
 
 .start-button {
+  margin-top: 60px;
   border-radius: 50%;
+  font-size: 1.2em;
   background: transparent;
-  height: 200px;
-  width: 200px;
-  border: 2px solid white;
-  color: #fff !important;
+  height: 225px;
+  width: 225px;
+  border: 3px solid white;
+  color:#CBC9CF !important;
 }
 
 .select-category {
@@ -101,11 +106,19 @@ input {
     border: none;
     border-bottom: 2px solid #fff;
 }
-
+.timer {
+    font-size: 3.25em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
 .error-message {
   margin-top: -27px;
   color: #EFB7EC;
   font-size: 0.7em;
+}
+#secondsError {
+    margin-left: 60%;
 }
 
 .minutes-seconds-container {
