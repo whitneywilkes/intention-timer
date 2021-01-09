@@ -13,6 +13,7 @@ class Activity {
 
     var countDownTimer = setInterval(function() {
       if (seconds === 0 && minutes === 0) {
+        alert("The time is up and the activity has been completed.");
         clearInterval(countDownTimer)
       } else if (seconds === 0) {
         minutes--
