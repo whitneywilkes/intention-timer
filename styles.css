@@ -190,3 +190,38 @@ input {
 .hidden {
     display: none;
 }
+
+article {
+  width: 90%;
+  background-color: #46424D;
+  margin-bottom: 25px;
+  border-radius: 5px;
+  padding: 2%;
+  /* border-right: 5px solid red; */
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+article:after {
+  content: "";
+  right: 3px;
+  top: 0;
+  width: 3px;
+  height: 50%;
+  color: red;
+  position: absolute;
+  z-index: 100;
+}
+
+.card-title {
+  font-weight: 400;
+}
+
+.card-description {
+  font-weight: 300;
+  font-size: 0.9em;
+}

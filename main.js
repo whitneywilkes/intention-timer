@@ -25,6 +25,11 @@ var minutesError = document.querySelector('#minutesError');
 var secondsError = document.querySelector('#secondsError');
 var errorMessages = document.querySelectorAll('.error-message');
 var timer = document.querySelector('#timerInsert');
+var logButton = document.querySelector('.log-button');
+var cardContainer = document.querySelector('.card-container');
+var defaultMessage = document.querySelector('.no-activities');
+
+logButton.addEventListener("click", displayCard);
 
 startActivityButton.addEventListener("click", startActivity);
 
@@ -91,6 +96,7 @@ function showTimer() {
     startButton.classList.add('exercise-active')
   }
 }
+
 function fixTime(minutes, seconds) {
   if (minutes < 10 && seconds < 10) {
     timer.innerText = `0${minutes}:0${seconds}`
@@ -113,16 +119,16 @@ function checkForErrors() {
     removeClass(errorMessages[3])
     return true
   }
-  for(var i=0; i < inputs.length; i++) {
-    if(inputs[i].length === 0) {
-      removeClass(errorMessages[i+1])
+  for (var i = 0; i < inputs.length; i++) {
+    if (inputs[i].length === 0) {
+      removeClass(errorMessages[i + 1])
       return true;
     }
   }
 }
 
 function hideErrorMessages() {
-  for(var i=0; i < errorMessages.length; i++) {
+  for (var i = 0; i < errorMessages.length; i++) {
     addClass(errorMessages[i]);
   }
 }
@@ -144,3 +150,12 @@ function resetButtons() {
   exerciseIcon.src = "./assets/exercise.svg";
 }
 
+function displayCard() {
+  addClass(defaultMessage);
+
+cardContainer.innerHTML += `<article>
+ <p class="card-title">${currentActivity.category}</p>
+ <p>${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</p>
+ <p class="card-description">${currentActivity.description}</p>
+ </article>`
+}
