@@ -34,14 +34,3 @@ class Activity {
   saveToStorage() {
   };
 };
-
-//startButton.innerText = "COMPLETE!";
-
-// - motivational message (all w/ markComplete()):
-// - replace markComplete() with the timer HTML line 42
-// -- need a hidden activity button to display in markComplete()**
-// -- need to add log activity button**
-//    --- create static in html but hidden from start
-
-// Instead, a motivational or congratulatory message appears on the left side of the page, replacing the timer.
-//text-transform: uppercase (this is a thing, that we can use... not here.. good to know)

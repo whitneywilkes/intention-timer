@@ -82,7 +82,7 @@ function startActivity() {
   showTimer();
 }
 
-// new function
+
 function showTimer() {
   removeClass(startActivityForm);
   fixTime(currentActivity.minutes, currentActivity.seconds)
@@ -91,13 +91,6 @@ function showTimer() {
   changeActivityColor(startButton, 'Study')
   changeActivityColor(startButton, 'Meditate')
   changeActivityColor(startButton, 'Exercise')
-  // if (currentActivity.category === 'Study') {
-  //   startButton.classList.add('study-active')
-  // } else if (currentActivity.category === 'Meditate') {
-  //   startButton.classList.add('meditate-active')
-  // } else if (currentActivity.category === 'Exercise') {
-  //   startButton.classList.add('exercise-active')
-  // }
 }
 
 function changeActivityColor(element, category) {
@@ -162,11 +155,11 @@ function resetButtons() {
 function displayCard() {
   addClass(defaultMessage);
  var color = checkColor(currentActivity.category);
-
+ logButton.disabled = true;
 cardContainer.innerHTML += `<article>
   <div class="card-section">
  <p class="card-title">${currentActivity.category}</p>
- <p>${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</p>
+ <p class="card-time">${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</p>
  <p class="card-description">${currentActivity.description}</p>
  </div>
  <div class="card-section">

@@ -199,6 +199,8 @@ article {
   padding: 2%;
   display: flex;
   justify-content: space-between;
+  border-radius: 5px;
+  box-shadow: 5px 5px #26222d;
 }
 
 .card-container {
@@ -231,4 +233,13 @@ article {
 }
 .exercise-pipe {
   background-color: #FD8078;
+}
+
+.card-description {
+  margin-top: 8px;
+  color: #CBC9CF;
+
+}
+.card-time {
+  color: #CBC9CF;
 }
