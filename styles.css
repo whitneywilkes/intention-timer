@@ -88,17 +88,30 @@ h3 {
 
 button {
     border-radius: 5px;
-    border: none;
     outline: none;
 }
+
 .button {
     background: transparent;
     border: 1.5px solid #fff;
     width: 175px;
     padding: 10px;
     font-size: .8em;
+    z-index: 5;
 }
 
+#studyButton:disabled, .study {
+  border-color: #B3FD78;
+  color: #B3FD78;
+}
+#meditateButton:disabled, .meditate {
+  border-color: #C278FD;
+  color: #C278FD;
+}
+#exerciseButton:disabled, .exercise {
+  border-color: #FD8078;
+  color: #FD8078;
+}
 input {
     background: transparent;
     width: 100%;
@@ -227,6 +240,7 @@ article {
 
 .study-pipe {
   background-color: #B3FD78;
+  outline:none;
 }
 .meditate-pipe {
   background-color: #C278FD;
