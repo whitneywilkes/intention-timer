@@ -88,17 +88,30 @@ h3 {
 
 button {
     border-radius: 5px;
-    border: none;
     outline: none;
 }
+
 .button {
     background: transparent;
     border: 1.5px solid #fff;
     width: 175px;
     padding: 10px;
     font-size: .8em;
+    z-index: 5;
 }
 
+#studyButton:disabled, .study {
+  border-color: #B3FD78;
+  color: #B3FD78;
+}
+#meditateButton:disabled, .meditate {
+  border-color: #C278FD;
+  color: #C278FD;
+}
+#exerciseButton:disabled, .exercise {
+  border-color: #FD8078;
+  color: #FD8078;
+}
 input {
     background: transparent;
     width: 100%;
@@ -147,6 +160,16 @@ input {
     font-size: large;
     font-weight: 400;
 }
+
+.log-button {
+    color: #2b2733;
+    height: 40px;
+    width: 225px;
+    font-size: large;
+    font-weight: 400;
+    margin-top: 35px;
+}
+
 /* **Section right** */
 .right-container {
     width: 35%;
@@ -179,4 +202,58 @@ input {
 }
 .hidden {
     display: none;
+}
+
+article {
+  width: 90%;
+  background-color: #46424D;
+  margin-bottom: 25px;
+  border-radius: 5px;
+  padding: 2%;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+  box-shadow: 5px 5px #26222d;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.card-title {
+  font-weight: 400;
+}
+
+.card-description {
+  font-weight: 300;
+  font-size: 0.9em;
+}
+
+.card-category-indicator {
+  height: 30px;
+  width: 3px;
+  padding: 0;
+}
+
+.study-pipe {
+  background-color: #B3FD78;
+  outline:none;
+}
+.meditate-pipe {
+  background-color: #C278FD;
+}
+.exercise-pipe {
+  background-color: #FD8078;
+}
+
+.card-description {
+  margin-top: 8px;
+  color: #CBC9CF;
+
+}
+.card-time {
+  color: #CBC9CF;
 }

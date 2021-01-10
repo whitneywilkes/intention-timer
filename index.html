@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <title>Intention Timer</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
 </head>
 
@@ -19,8 +19,8 @@
       <form id="defaultForm">
         <p class="select-category"> Select a category:</p>
         <div class="button-container">
-          <button class="button" id="studyButton" type="button" name="button" value="Study"> <img class="button-icon" id="study-icon" src="./assets/study.svg" alt="lightbulb"><br>Study</button>
-          <button class="button" id="meditateButton" type="button" name="button" value="Meditate"><img class="button-icon" id="meditate-icon" src="./assets/meditate.svg" alt="lotus flower"><br>Meditate</button>
+          <button class="button" id="studyButton" type="button" name="button" value="Study"> <img class="button-icon" id="study-icon" src="./assets/study.svg" alt="lightbulb" ><br>Study</button>
+          <button class="button" id="meditateButton" type="button" name="button" value="Meditate"><img class="button-icon" id="meditate-icon" src="./assets/meditate.svg" alt="lotus flower" ><br>Meditate</button>
           <button class="button" id="exerciseButton" type="button" name="button" value="Exercise"><img class="button-icon" id="exercise-icon" src="./assets/exercise.svg" alt="running shoe"><br>Exercise</button>
         </div>
         <p class="error-message hidden" id="categoryError"><img class="warning-icon" src="./assets/warning.svg" alt="warning icon">Please select a category</p>
@@ -40,12 +40,14 @@
         <h3 id="userDescriptionInput"></h3>
         <p id="timerInsert" class="timer"></p>
         <button class="start-button" type="button" name="button">START</button>
+        <button class="log-button hidden" type="button" name="button">LOG ACTIVITY</button>
       </form>
     </section>
 
     <section class="right-container">
       <h2>Past Activities</h2>
-      <p>You haven't logged any activities yet.<br> Complete the form to the left to get started!</p>
+      <div class="card-container"></div>
+      <p class="no-activities">You haven't logged any activities yet.<br> Complete the form to the left to get started!</p>
     </section>
 
   </main>

@@ -10,10 +10,11 @@ class Activity {
   startTimer() {
   var minutes = this.minutes;
   var seconds = this.seconds;
+  var stop = this.markComplete;
 
     var countDownTimer = setInterval(function() {
       if (seconds === 0 && minutes === 0) {
-        alert("The time is up and the activity has been completed.");
+        stop()
         clearInterval(countDownTimer)
       } else if (seconds === 0) {
         minutes--
@@ -23,8 +24,11 @@ class Activity {
       }
       fixTime(minutes, seconds)
     }, 1000)
-}
+  }
+
   markComplete() {
+    startButton.innerText = "COMPLETE!";
+    removeClass(logButton);
   };
 
   saveToStorage() {
