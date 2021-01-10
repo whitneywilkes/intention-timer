@@ -2,8 +2,8 @@ class Activity {
   constructor(category, description, minutes, seconds) {
     this.category = category;
     this.description = description;
-    this.minutes = parseInt(minutes);
-    this.seconds = parseInt(seconds);
+    this.minutes = minutes;
+    this.seconds = seconds;
     this.completed = false;
     this.id = Date.now();
   };
@@ -22,7 +22,7 @@ class Activity {
       } else if (seconds !== 0) {
         seconds--
       }
-      fixTime(minutes, seconds)
+      timer.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2 , '0')}`;
     }, 1000)
   }
 

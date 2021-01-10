@@ -30,9 +30,7 @@ var cardContainer = document.querySelector('.card-container');
 var defaultMessage = document.querySelector('.no-activities');
 
 logButton.addEventListener("click", displayCard);
-
 startActivityButton.addEventListener("click", startActivity);
-
 startButton.addEventListener("click", function() {
   currentActivity.startTimer();
 });
@@ -74,24 +72,12 @@ function startActivity() {
 
 function showTimer() {
   removeClass(startActivityForm);
-  fixTime(currentActivity.minutes, currentActivity.seconds)
+  timer.innerText = `${currentActivity.minutes.padStart(2, '0')}:${currentActivity.seconds.padStart(2, '0')}`
   activityHeader.innerText = 'Current Activity';
   userDescriptionInput.innerText = currentActivity.description;
   addClass(startButton, `${currentActivity.category.toLowerCase()}`)
 }
 
-
-function fixTime(minutes, seconds) {
-  if (minutes < 10 && seconds < 10) {
-    timer.innerText = `0${minutes}:0${seconds}`
-  } else if (minutes < 10) {
-    timer.innerText = `0${minutes}:${seconds}`
-  } else if (seconds < 10) {
-    timer.innerText = `${minutes}:0${seconds}`
-  } else {
-    timer.innerText = `${minutes}:${seconds}`;
-  }
-}
 
 function checkForErrors() {
   hideErrorMessages();
