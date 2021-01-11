@@ -33,5 +33,7 @@ class Activity {
   };
 
   saveToStorage() {
+    var local = JSON.stringify(pastActivities)
+    localStorage.setItem('savedArray', local)
   };
 };
