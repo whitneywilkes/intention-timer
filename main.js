@@ -139,6 +139,7 @@ function displayCard() {
   var color = currentActivity.category.toLowerCase()
   removeClass(startNewActivityForm)
   addClass(startActivityForm)
+  currentActivity.completed = true;
   pastActivities.push(currentActivity)
   currentActivity.saveToStorage();//testing this
   cardContainer.innerHTML +=
