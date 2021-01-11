@@ -72,12 +72,14 @@ function startActivity() {
 
 function showTimer() {
   removeClass(startActivityForm);
-  timer.innerText = `${currentActivity.minutes.padStart(2, '0')}:${currentActivity.seconds.padStart(2, '0')}`;
+  fixTime();
   activityHeader.innerText = 'Current Activity';
   userDescriptionInput.innerText = currentActivity.description;
   addClass(startButton, `${currentActivity.category.toLowerCase()}`);
 };
-
+function fixTime() {
+ timer.innerText = `${currentActivity.minutes.padStart(2, '0')}:${currentActivity.seconds.padStart(2, '0')}`;
+}
 
 function checkForErrors() {
   hideErrorMessages();

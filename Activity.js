@@ -23,7 +23,7 @@ class Activity {
     } else {
       seconds--
     }
-    timer.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2 , '0')}`;
+    fixTime();
   }, 1000);
   };
 
