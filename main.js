@@ -57,11 +57,12 @@ function findButton() {
       return activityButtons[i].value;
     };
   };
+  removeClass(categoryError);
   return false;
 };
 
 function startActivity() {
-  if (checkForErrors()) {
+  if (!findButton() || checkForErrors()) {
     return;
   };
   currentActivity = new Activity(findButton(), accomplishInputField.value, minInputField.value, secInputField.value);
@@ -72,28 +73,22 @@ function startActivity() {
 
 function showTimer() {
   removeClass(startActivityForm);
-  fixTime();
+  timer.innerText = `${currentActivity.minutes.padStart(2, '0')}:${currentActivity.seconds.padStart(2, '0')}`;
   activityHeader.innerText = 'Current Activity';
   userDescriptionInput.innerText = currentActivity.description;
   addClass(startButton, `${currentActivity.category.toLowerCase()}`);
 };
-function fixTime() {
- timer.innerText = `${currentActivity.minutes.padStart(2, '0')}:${currentActivity.seconds.padStart(2, '0')}`;
-}
 
 function checkForErrors() {
   hideErrorMessages();
   var inputs = [accomplishInputField.value, minInputField.value, secInputField.value];
-  if (!findButton()) {
-    removeClass(categoryError);
-    return true;
-  } else if (inputs[2] >= 60 || parseInt(inputs[1]) === 0 && parseInt(inputs[2]) === 0) {
-    removeClass(errorMessages[3]);
+  if (inputs[2] >= 60 || parseInt(inputs[1]) === 0 && parseInt(inputs[2]) === 0) {
+    removeClass(errorMessages[2]);
     return true;
   }
   for (var i = 0; i < inputs.length; i++) {
     if (inputs[i].length === 0) {
-      removeClass(errorMessages[i + 1]);
+      removeClass(errorMessages[i]);
       return true;
     }
   } 
@@ -103,6 +98,7 @@ function hideErrorMessages() {
   for (var i = 0; i < errorMessages.length; i++) {
     addClass(errorMessages[i]);
   }
+  addClass(categoryError)
 }
 
 function removeClass(element, className) {
