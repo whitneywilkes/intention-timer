@@ -32,6 +32,17 @@ var startNewActivityForm = document.querySelector('.start-new-activity')
 var createNewActivityButton = document.querySelector('.create-new-activity-button')
 var userInputs = document.querySelectorAll('input')
 
+// window.addEventListener("load", windowLoad);
+
+window.addEventListener('load', function () {
+  if(localStorage.length === 0) {
+    return
+  } else {
+    windowLoad()
+    addClass(defaultMessage)
+  }
+})
+
 logButton.addEventListener("click", displayCard);
 startActivityButton.addEventListener("click", startActivity);
 createNewActivityButton.addEventListener("click", function(event){
@@ -130,12 +141,13 @@ function displayCard() {
   removeClass(startNewActivityForm)
   addClass(startActivityForm)
   pastActivities.push(currentActivity)
+  saveInfo()
   cardContainer.innerHTML += 
-   `<article>
+  `<article>
       <div class="card-section">
         <p class="card-title">${currentActivity.category}</p>
         <p class="card-time">${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</p>
-         <p class="card-description">${currentActivity.description}</p>
+        <p class="card-description">${currentActivity.description}</p>
       </div>
       <div class="card-section">
       <button class="card-category-indicator ${color}"type="button" name="button"></button>
@@ -155,14 +167,14 @@ function createNewActivity() {
   };
 };
 
-function saveActivities() {
-  localStorage.setItem("pastActivities", JSON.stringify(pastActivities))
-  // pastActivities = localStorage.getItem(JSON.parse('pastActivities'))
-};
+// function saveActivities() {
+//   localStorage.setItem("pastActivities", JSON.stringify(pastActivities));
+// };
 
-function onLoadDisplay() {
-    pastActivities = JSON.parse(localStorage.getItem("pastActivities"));
-};
+// function onLoadDisplay() {
+//     pastActivities = JSON.parse(localStorage.getItem("pastActivities"));
+//     displayCard();
+// };
 
 //When the user refreshes the page,
 // Their past activities are still displayed!
@@ -177,3 +189,36 @@ function onLoadDisplay() {
 // JSON.stringify(pastActivities)
 // localStorage.setItem("pastActivities", JSON.stringify(pastActivities))
 // pastActivities = localStorage.getItem(JSON.parse('pastActivities'))
+
+
+function saveInfo() {
+  var local = JSON.stringify(pastActivities)
+  localStorage.setItem('savedArray', local)
+}
+function windowLoad() {
+  var page = localStorage.getItem('savedArray')
+  var info = JSON.parse(page)
+  pastActivities = info
+  // console.log(pastActivities)
+  // if (pastActivities.length === 0) {
+  //   return
+  // } else {
+    loadCard(pastActivities)
+  // }
+}
+function loadCard(thing) {
+  for(var i = 0; i < thing.length; i++) {
+  var color = thing[i].category.toLowerCase()
+  cardContainer.innerHTML +=
+  `<article>
+      <div class="card-section">
+        <p class="card-title">${thing[i].category}</p>
+        <p class="card-time">${thing[i].minutes} MIN ${thing[i].seconds} SECONDS</p>
+        <p class="card-description">${thing[i].description}</p>
+      </div>
+      <div class="card-section">
+      <button class="card-category-indicator ${color}"type="button" name="button"></button>
+      </div>
+    </article>`
+  }
+}
