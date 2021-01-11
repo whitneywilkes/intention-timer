@@ -16,8 +16,8 @@ var meditateButton = document.querySelector("#meditateButton");
 var exerciseButton = document.querySelector("#exerciseButton");
 var defaultForm = document.querySelector('#defaultForm');
 var activityHeader = document.querySelector('#activityType');
-var startActivityForm = document.querySelector('#startActivityForm')
-var userDescriptionInput = document.querySelector('#userDescriptionInput')
+var startActivityForm = document.querySelector('#startActivityForm');
+var userDescriptionInput = document.querySelector('#userDescriptionInput');
 var startButton = document.querySelector('.start-button');
 var categoryError = document.querySelector('#categoryError');
 var descriptionError = document.querySelector('#descriptionError');
@@ -31,16 +31,16 @@ var defaultMessage = document.querySelector('.no-activities');
 
 logButton.addEventListener("click", displayCard);
 startActivityButton.addEventListener("click", startActivity);
+
 startButton.addEventListener("click", function() {
   currentActivity.startTimer();
 });
 
 selectActivityButton.addEventListener("click", function(event) {
   var button = event.target.closest('button');
-  console.log(button)
   resetButtons();
-  button.disabled = true 
-  button.firstElementChild.src = `./assets/${button.value.toLowerCase()}-active.svg`
+  button.disabled = true ;
+  button.firstElementChild.src = `./assets/${button.value.toLowerCase()}-active.svg`;
 });
 
 
@@ -55,10 +55,10 @@ function findButton() {
   for (var i = 0; i < activityButtons.length; i++) {
     if (activityButtons[i].disabled) {
       return activityButtons[i].value;
-    }
-  }
+    };
+  };
   return false;
-}
+};
 
 function startActivity() {
   if (checkForErrors()) {
@@ -67,31 +67,31 @@ function startActivity() {
   currentActivity = new Activity(findButton(), accomplishInputField.value, minInputField.value, secInputField.value);
   addClass(defaultForm);
   showTimer();
-}
+};
 
 
 function showTimer() {
   removeClass(startActivityForm);
-  timer.innerText = `${currentActivity.minutes.padStart(2, '0')}:${currentActivity.seconds.padStart(2, '0')}`
+  timer.innerText = `${currentActivity.minutes.padStart(2, '0')}:${currentActivity.seconds.padStart(2, '0')}`;
   activityHeader.innerText = 'Current Activity';
   userDescriptionInput.innerText = currentActivity.description;
-  addClass(startButton, `${currentActivity.category.toLowerCase()}`)
-}
+  addClass(startButton, `${currentActivity.category.toLowerCase()}`);
+};
 
 
 function checkForErrors() {
   hideErrorMessages();
-  var inputs = [accomplishInputField.value, minInputField.value, secInputField.value]
+  var inputs = [accomplishInputField.value, minInputField.value, secInputField.value];
   if (!findButton()) {
     removeClass(categoryError);
     return true;
   } else if (inputs[2] >= 60 || parseInt(inputs[1]) === 0 && parseInt(inputs[2]) === 0) {
-    removeClass(errorMessages[3])
-    return true
+    removeClass(errorMessages[3]);
+    return true;
   }
   for (var i = 0; i < inputs.length; i++) {
     if (inputs[i].length === 0) {
-      removeClass(errorMessages[i + 1])
+      removeClass(errorMessages[i + 1]);
       return true;
     }
   } 
@@ -113,11 +113,9 @@ function addClass(element, className) {
 
 function resetButtons() {
   for(var i = 0; i < activityButtons.length; i++) {
-    activityButtons[i].disabled = false 
-  }
-  studyIcon.src = "./assets/study.svg";
-  meditateIcon.src = "./assets/meditate.svg";
-  exerciseIcon.src = "./assets/exercise.svg";
+    activityButtons[i].disabled = false ;
+    activityButtons[i].firstElementChild.src = activityButtons[i].firstElementChild.src.replace('-active', "")
+  };
 }
 
 function displayCard() {
