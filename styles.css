@@ -59,6 +59,10 @@ form {
   align-items: center;
 
 }
+.start-new-activity {
+  display: flex;
+  flex-direction: row;
+}
 
 h3 {
   color:#CBC9CF;
@@ -161,13 +165,17 @@ input {
     font-weight: 400;
 }
 
-.log-button {
+.log-button, .create-new-activity-button {
     color: #2b2733;
     height: 40px;
     width: 225px;
     font-size: large;
     font-weight: 400;
     margin-top: 35px;
+}
+.create-new-activity-button {
+  color:#2b2733;
+  width: 325px
 }
 
 /* **Section right** */

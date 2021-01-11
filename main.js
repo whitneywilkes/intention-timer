@@ -28,9 +28,17 @@ var timer = document.querySelector('#timerInsert');
 var logButton = document.querySelector('.log-button');
 var cardContainer = document.querySelector('.card-container');
 var defaultMessage = document.querySelector('.no-activities');
+var startNewActivityForm = document.querySelector('.start-new-activity')
+var createNewActivityButton = document.querySelector('.create-new-activity-button')
+var userInputs = document.querySelectorAll('input')
 
 logButton.addEventListener("click", displayCard);
 startActivityButton.addEventListener("click", startActivity);
+createNewActivityButton.addEventListener("click", function(event){
+  event.preventDefault();
+  createNewActivity();
+});
+
 
 startButton.addEventListener("click", function() {
   currentActivity.startTimer();
@@ -119,7 +127,9 @@ function resetButtons() {
 function displayCard() {
   addClass(defaultMessage);
   var color = currentActivity.category.toLowerCase()
-  logButton.disabled = true;
+  removeClass(startNewActivityForm)
+  addClass(startActivityForm)
+  pastActivities.push(currentActivity)
   cardContainer.innerHTML += 
    `<article>
       <div class="card-section">
@@ -133,3 +143,14 @@ function displayCard() {
     </article>`
 }
 
+function createNewActivity() {
+  addClass(logButton)
+  addClass(startNewActivityForm)
+  removeClass(defaultForm)
+  resetButtons()
+  startButton.disabled = false
+  startButton.innerText = "START"
+  for (var i = 0; i < userInputs.length; i++){
+    userInputs[i].value = ""
+  }
+}
