@@ -16,8 +16,8 @@ var meditateButton = document.querySelector("#meditateButton");
 var exerciseButton = document.querySelector("#exerciseButton");
 var defaultForm = document.querySelector('#defaultForm');
 var activityHeader = document.querySelector('#activityType');
-var startActivityForm = document.querySelector('#startActivityForm')
-var userDescriptionInput = document.querySelector('#userDescriptionInput')
+var startActivityForm = document.querySelector('#startActivityForm');
+var userDescriptionInput = document.querySelector('#userDescriptionInput');
 var startButton = document.querySelector('.start-button');
 var categoryError = document.querySelector('#categoryError');
 var descriptionError = document.querySelector('#descriptionError');
@@ -30,7 +30,6 @@ var cardContainer = document.querySelector('.card-container');
 var defaultMessage = document.querySelector('.no-activities');
 
 logButton.addEventListener("click", displayCard);
-
 startActivityButton.addEventListener("click", startActivity);
 
 startButton.addEventListener("click", function() {
@@ -39,10 +38,9 @@ startButton.addEventListener("click", function() {
 
 selectActivityButton.addEventListener("click", function(event) {
   var button = event.target.closest('button');
-  console.log(button)
   resetButtons();
-  button.disabled = true 
-  button.firstElementChild.src = `./assets/${button.value.toLowerCase()}-active.svg`
+  button.disabled = true ;
+  button.firstElementChild.src = `./assets/${button.value.toLowerCase()}-active.svg`;
 });
 
 
@@ -57,55 +55,40 @@ function findButton() {
   for (var i = 0; i < activityButtons.length; i++) {
     if (activityButtons[i].disabled) {
       return activityButtons[i].value;
-    }
-  }
+    };
+  };
+  removeClass(categoryError);
   return false;
-}
+};
 
 function startActivity() {
-  if (checkForErrors()) {
+  if (!findButton() || checkForErrors()) {
     return;
   };
   currentActivity = new Activity(findButton(), accomplishInputField.value, minInputField.value, secInputField.value);
   addClass(defaultForm);
   showTimer();
-}
+};
 
 
 function showTimer() {
   removeClass(startActivityForm);
-  fixTime(currentActivity.minutes, currentActivity.seconds)
+  timer.innerText = `${currentActivity.minutes.padStart(2, '0')}:${currentActivity.seconds.padStart(2, '0')}`;
   activityHeader.innerText = 'Current Activity';
   userDescriptionInput.innerText = currentActivity.description;
-  addClass(startButton, `${currentActivity.category.toLowerCase()}`)
-}
-
-
-function fixTime(minutes, seconds) {
-  if (minutes < 10 && seconds < 10) {
-    timer.innerText = `0${minutes}:0${seconds}`
-  } else if (minutes < 10) {
-    timer.innerText = `0${minutes}:${seconds}`
-  } else if (seconds < 10) {
-    timer.innerText = `${minutes}:0${seconds}`
-  } else {
-    timer.innerText = `${minutes}:${seconds}`;
-  }
-}
+  addClass(startButton, `${currentActivity.category.toLowerCase()}`);
+};
 
 function checkForErrors() {
   hideErrorMessages();
-  var inputs = [accomplishInputField.value, minInputField.value, secInputField.value]
-  if (!findButton()) {
-    removeClass(categoryError);
+  var inputs = [accomplishInputField.value, minInputField.value, secInputField.value];
+  if (inputs[2] >= 60 || parseInt(inputs[1]) === 0 && parseInt(inputs[2]) === 0) {
+    removeClass(errorMessages[2]);
     return true;
-  } else if (inputs[2] >= 60 || parseInt(inputs[1]) === 0 && parseInt(inputs[2]) === 0) {
-    removeClass(errorMessages[3])
-    return true
   }
   for (var i = 0; i < inputs.length; i++) {
     if (inputs[i].length === 0) {
-      removeClass(errorMessages[i + 1])
+      removeClass(errorMessages[i]);
       return true;
     }
   } 
@@ -115,6 +98,7 @@ function hideErrorMessages() {
   for (var i = 0; i < errorMessages.length; i++) {
     addClass(errorMessages[i]);
   }
+  addClass(categoryError)
 }
 
 function removeClass(element, className) {
@@ -127,11 +111,9 @@ function addClass(element, className) {
 
 function resetButtons() {
   for(var i = 0; i < activityButtons.length; i++) {
-    activityButtons[i].disabled = false 
-  }
-  studyIcon.src = "./assets/study.svg";
-  meditateIcon.src = "./assets/meditate.svg";
-  exerciseIcon.src = "./assets/exercise.svg";
+    activityButtons[i].disabled = false ;
+    activityButtons[i].firstElementChild.src = activityButtons[i].firstElementChild.src.replace('-active', "")
+  };
 }
 
 function displayCard() {

@@ -125,7 +125,7 @@ input {
     font-weight: bold;
     letter-spacing: 3px;
 }
-.error-message {
+.error-message, #categoryError{
   margin-top: -27px;
   color: #EFB7EC;
   font-size: 0.7em;
