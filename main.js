@@ -141,7 +141,7 @@ function displayCard() {
       <button class="card-category-indicator ${color}"type="button" name="button"></button>
       </div>
     </article>`
-}
+};
 
 function createNewActivity() {
   addClass(logButton)
@@ -152,5 +152,28 @@ function createNewActivity() {
   startButton.innerText = "START"
   for (var i = 0; i < userInputs.length; i++){
     userInputs[i].value = ""
-  }
-}
+  };
+};
+
+function saveActivities() {
+  localStorage.setItem("pastActivities", JSON.stringify(pastActivities))
+  // pastActivities = localStorage.getItem(JSON.parse('pastActivities'))
+};
+
+function onLoadDisplay() {
+    pastActivities = JSON.parse(localStorage.getItem("pastActivities"));
+};
+
+//When the user refreshes the page,
+// Their past activities are still displayed!
+// Hint: localStorage could come in handy here…
+
+// -- needs:
+
+// - on window load - json.parse back to past activities to re-pop
+// - refactor displayCard function on window load?
+// -- could call in a loop to fire for each item
+
+// JSON.stringify(pastActivities)
+// localStorage.setItem("pastActivities", JSON.stringify(pastActivities))
+// pastActivities = localStorage.getItem(JSON.parse('pastActivities'))
