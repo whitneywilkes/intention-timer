@@ -18,7 +18,7 @@
 $ git clone git@github.com:whitneywilkes/intention-timer.git
 ```
 
-
+![Screen Shot 2021-01-12 at 3 16 16 PM](https://user-images.githubusercontent.com/66529559/104384543-e2dcc180-54ee-11eb-97d7-194a51e17400.png)
 
 ## Features
 
