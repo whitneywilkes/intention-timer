@@ -4,18 +4,12 @@
 ### [Click here for a live demo](https://whitneywilkes.github.io/intention-timer)
 
 ## Contributors
-<span>
-<a href="https://github.com/JeffShepherd">
-  <img style="height:100px; width:100px; border-radius: 50%;" src="https://avatars3.githubusercontent.com/u/66529559?s=460&u=674630fc15eba51ebd9cc73236c10a146516ba40&v=4" />
-</a> <br><p>Jeff Shepherd</p> </span>
-<span>
-<a href="https://github.com/itsnameissteven">
-  <img style="height:100px; width:100px; border-radius: 50%;" src="https://avatars2.githubusercontent.com/u/72312636?s=460&u=fa68783de9d231f3f2219e2554d597e182fd556c&v=4" />
-</a> <br><p>Steven Mancine</p> </span>
-<span>
-<a href="https://github.com/whitneywilkes">
-  <img style="height:100px; width:100px; border-radius: 50%;" src="https://avatars2.githubusercontent.com/u/65980084?s=460&u=274d02b71b63d07f6f0e317660d8dba1e5ffe535&v=4" />
-</a><br><p>Whitney Wilkes</p> </span>
+##### Jeff Shepherd: [GitHub](https://github.com/JeffShepherd)
+
+##### Steven Mancine: [GitHub](https://github.com/itsnameissteven)
+
+##### Whitney Wilkes: [GitHub](https://github.com/whitneywilkes)
+
 
 ## Setup
 
@@ -23,14 +17,6 @@
 ```
 $ git clone git@github.com:whitneywilkes/intention-timer.git
 ```
-
-
-
-//screenshot placeholder
-
-
-
-
 
 
 
