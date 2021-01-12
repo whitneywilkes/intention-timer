@@ -39,7 +39,6 @@ selectActivityButton.addEventListener("click", function(event) {
   button.firstElementChild.src = `./assets/${button.value.toLowerCase()}-active.svg`;
 });
 
-
 timerContainer.addEventListener("keydown", function(event) {
   var invalidCharacters = ["e", "+", "-"];
   if (invalidCharacters.includes(event.key)) {
@@ -66,7 +65,6 @@ function startActivity() {
   showTimer();
 };
 
-
 function showTimer() {
   removeClass(startActivityForm);
   timer.innerText = `${currentActivity.minutes.padStart(2, '0')}:${currentActivity.seconds.padStart(2, '0')}`;
@@ -79,12 +77,14 @@ function checkForErrors() {
   hideErrorMessages();
   var inputs = [accomplishInputField.value, minInputField.value, secInputField.value];
   if (inputs[2] >= 60 || parseInt(inputs[1]) === 0 && parseInt(inputs[2]) === 0) {
-    removeClass(errorMessages[2]);
+    removeClass(errorMessages[2])
+    addClass(userInputs[2], "error-line");
     return true;
   }
   for (var i = 0; i < inputs.length; i++) {
     if (inputs[i].length === 0) {
       removeClass(errorMessages[i]);
+      addClass(userInputs[i], "error-line");
       return true;
     }
   }
@@ -93,6 +93,7 @@ function checkForErrors() {
 function hideErrorMessages() {
   for (var i = 0; i < errorMessages.length; i++) {
     addClass(errorMessages[i]);
+    removeClass(userInputs[i], "error-line");
   }
   addClass(categoryError)
 }
@@ -117,7 +118,7 @@ function displayCard() {
   removeClass(startNewActivityForm)
   addClass(startActivityForm)
   currentActivity.completed = true;
-  pastActivities.push(currentActivity)
+  pastActivities.unshift(currentActivity)
   currentActivity.saveToStorage();
   loadCard()
 };
@@ -133,7 +134,7 @@ function loadCard() {
         <p class="card-description">${pastActivities[i].description}</p>
       </div>
       <div class="card-section">
-      <button class="card-category-indicator ${pastActivities[i].category.toLowerCase()}"type="button" name="button"></button>
+      <button class="card-category-indicator ${pastActivities[i].category.toLowerCase()}"></button>
       </div>
     </article>`
   };
