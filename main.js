@@ -8,21 +8,12 @@ var accomplishInputField = document.querySelector(".accomplish-input");
 var minInputField = document.querySelector("#minutesInput");
 var secInputField = document.querySelector("#secondsInput");
 var startActivityButton = document.querySelector(".start-activity-button");
-var studyIcon = document.querySelector("#study-icon");
-var meditateIcon = document.querySelector("#meditate-icon");
-var exerciseIcon = document.querySelector("#exercise-icon");
-var studyButton = document.querySelector("#studyButton");
-var meditateButton = document.querySelector("#meditateButton");
-var exerciseButton = document.querySelector("#exerciseButton");
 var defaultForm = document.querySelector('#defaultForm');
 var activityHeader = document.querySelector('#activityType');
 var startActivityForm = document.querySelector('#startActivityForm');
 var userDescriptionInput = document.querySelector('#userDescriptionInput');
 var startButton = document.querySelector('.start-button');
 var categoryError = document.querySelector('#categoryError');
-var descriptionError = document.querySelector('#descriptionError');
-var minutesError = document.querySelector('#minutesError');
-var secondsError = document.querySelector('#secondsError');
 var errorMessages = document.querySelectorAll('.error-message');
 var timer = document.querySelector('#timerInsert');
 var logButton = document.querySelector('.log-button');
@@ -32,13 +23,12 @@ var startNewActivityForm = document.querySelector('.start-new-activity')
 var createNewActivityButton = document.querySelector('.create-new-activity-button')
 var userInputs = document.querySelectorAll('input')
 
-
-window.addEventListener('load', displayLocalStorage)
-
+window.addEventListener('load', displayLocalStorage);
 logButton.addEventListener("click", displayCard);
 startActivityButton.addEventListener("click", startActivity);
-createNewActivityButton.addEventListener("click", window.location.reload)
-
+createNewActivityButton.addEventListener("click", function() {
+  window.location.reload()
+})
 
 startButton.addEventListener("click", function() {
   currentActivity.startTimer();
@@ -51,9 +41,8 @@ selectActivityButton.addEventListener("click", function(event) {
   button.firstElementChild.src = `./assets/${button.value.toLowerCase()}-active.svg`;
 });
 
-
 timerContainer.addEventListener("keydown", function(event) {
-  var invalidCharacters = ["e", "+", "-"];
+  var invalidCharacters = ["e", "+", "-", "."];
   if (invalidCharacters.includes(event.key)) {
     event.preventDefault();
   }
@@ -78,10 +67,9 @@ function startActivity() {
   showTimer();
 };
 
-
 function showTimer() {
   removeClass(startActivityForm);
-  timer.innerText = `${currentActivity.minutes.padStart(2, '0')}:${currentActivity.seconds.padStart(2, '0')}`;
+  fixTime(currentActivity.minutes, currentActivity.seconds)
   activityHeader.innerText = 'Current Activity';
   userDescriptionInput.innerText = currentActivity.description;
   addClass(startButton, `${currentActivity.category.toLowerCase()}`);
@@ -91,12 +79,14 @@ function checkForErrors() {
   hideErrorMessages();
   var inputs = [accomplishInputField.value, minInputField.value, secInputField.value];
   if (inputs[2] >= 60 || parseInt(inputs[1]) === 0 && parseInt(inputs[2]) === 0) {
-    removeClass(errorMessages[2]);
+    removeClass(errorMessages[2])
+    addClass(userInputs[2], "error-line");
     return true;
   }
   for (var i = 0; i < inputs.length; i++) {
     if (inputs[i].length === 0) {
       removeClass(errorMessages[i]);
+      addClass(userInputs[i], "error-line");
       return true;
     }
   }
@@ -105,6 +95,7 @@ function checkForErrors() {
 function hideErrorMessages() {
   for (var i = 0; i < errorMessages.length; i++) {
     addClass(errorMessages[i]);
+    removeClass(userInputs[i], "error-line");
   }
   addClass(categoryError)
 }
@@ -126,55 +117,64 @@ function resetButtons() {
 
 function displayCard() {
   addClass(defaultMessage);
-  var color = currentActivity.category.toLowerCase()
   removeClass(startNewActivityForm)
   addClass(startActivityForm)
-  currentActivity.completed = true;
-  pastActivities.push(currentActivity)
-  currentActivity.saveToStorage();//testing this
-  cardContainer.innerHTML +=
-    `<article>
-      <div class="card-section">
-        <p class="card-title">${currentActivity.category}</p>
-        <p class="card-time">${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</p>
-        <p class="card-description">${currentActivity.description}</p>
-      </div>
-      <div class="card-section">
-      <button class="card-category-indicator ${color}"type="button" name="button"></button>
-      </div>
-    </article>`
+  pastActivities.unshift(currentActivity)
+  currentActivity.saveToStorage();
+  loadPastCards()
 };
 
-
-function windowLoad() {
-  var page = localStorage.getItem('savedArray')
-  var info = JSON.parse(page)
-  pastActivities = info
-
-  loadCard(pastActivities)
-}
-
-function loadCard(thing) {
-  for (var i = 0; i < thing.length; i++) {
-    var color = thing[i].category.toLowerCase()
+function loadPastCards() {
+  cardContainer.innerHTML = ""
+  for (var i = 0; i < pastActivities.length; i++) {
     cardContainer.innerHTML +=
       `<article>
       <div class="card-section">
-        <p class="card-title">${thing[i].category}</p>
-        <p class="card-time">${thing[i].minutes} MIN ${thing[i].seconds} SECONDS</p>
-        <p class="card-description">${thing[i].description}</p>
+        <p class="card-title">${pastActivities[i].category}</p>
+        <p class="card-time">${pastActivities[i].minutes} MIN ${pastActivities[i].seconds} SECONDS</p>
+        <p class="card-description">${pastActivities[i].description}</p>
       </div>
       <div class="card-section">
-      <button class="card-category-indicator ${color}"type="button" name="button"></button>
+      <button class="card-category-indicator ${pastActivities[i].category.toLowerCase()}"></button>
       </div>
     </article>`
-  }
-}
+  };
+};
+
+function retrievePastActivities() {
+  var page = localStorage.getItem('savedArray');
+  var info = JSON.parse(page);
+  pastActivities = info;
+  loadPastCards();
+};
 
 function displayLocalStorage() {
   if (localStorage.length === 0) {
-    removeClass(defaultMessage)
-    return
+    removeClass(defaultMessage);
+    return;
   }
-    windowLoad()
+    retrievePastActivities();
+};
+
+
+function displayTime(minutes, seconds) {
+  startButton.disabled = true
+  var countDownTimer = setInterval(function() {
+      if (seconds === 0 && minutes === 0) {
+        startButton.innerText = "COMPLETE!";
+        removeClass(logButton);
+        currentActivity.markComplete()
+        clearInterval(countDownTimer)
+      } else if (seconds === 0) {
+        minutes--
+        seconds = 59
+      } else {
+        seconds--
+      }
+      fixTime(minutes, seconds)
+    }, 1000);
+}
+
+function fixTime(minutes, seconds) {
+  timer.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2 , '0')}`
 }

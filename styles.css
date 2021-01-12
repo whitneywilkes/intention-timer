@@ -1,14 +1,15 @@
 * {
     margin: 0;
     box-sizing: border-box;
-    font-family: montserrat;
+    font-family: "Montserrat";
     color: #fff;
 }
+
 html, main, body {
     height: 100%;
     width: 100%;
 }
-/* **Header** */
+
 header {
     background-color: #46424D;
     height: 60px;
@@ -30,7 +31,6 @@ font-size: 24px;
 color: #CBC9CF;
 }
 
-/* **Section left** */
 .left-container, .right-container {
     float: left;
     height: 100%;
@@ -102,11 +102,10 @@ button {
 
 .button {
     background: transparent;
-    border: 1.5px solid #fff;
+    border: 2px solid #fff;
     width: 175px;
     padding: 10px;
     font-size: .8em;
-    z-index: 5;
 }
 
 #studyButton:disabled, .study {
@@ -121,12 +120,13 @@ button {
   border-color: #FD8078;
   color: #FD8078;
 }
-input {
+input, input:active {
     background: transparent;
     width: 100%;
     height: 45px;
-    border: none;
-    border-bottom: 2px solid #fff;
+    border: 0;
+    outline: none;
+    border-bottom: 1.5px solid #fff;
 }
 .timer {
     font-size: 3.25em;
@@ -138,6 +138,9 @@ input {
   margin-top: -27px;
   color: #EFB7EC;
   font-size: 0.7em;
+}
+.error-line{
+  border-color:#EFB7EC;
 }
 #secondsError {
     margin-left: 60%;
@@ -166,7 +169,7 @@ input {
     color: #2b2733;
     height: 40px;
     margin-left: 70%;
-    font-size: large;
+    font-size: .9em;
     font-weight: 400;
 }
 
@@ -174,7 +177,7 @@ input {
     color: #2b2733;
     height: 40px;
     width: 225px;
-    font-size: large;
+    font-size: .9em;
     font-weight: 400;
     margin-top: 35px;
 }
@@ -183,7 +186,6 @@ input {
   width: 325px
 }
 
-/* **Section right** */
 .right-container {
     width: 35%;
     border-left: 4px solid #46424D;
@@ -195,21 +197,7 @@ input {
     color: #CBC9CF;
 }
 
-/* active button settings */
-.study-active {
-  border-color: #B3FD78;
-  color: #B3FD78;
-}
-.meditate-active {
-  border-color: #C278FD;
-  color: #C278FD;
-}
-.exercise-active {
-  border-color: #FD8078;
-  color: #FD8078;
-}
-.timer-input::-webkit-inner-spin-button,
-.timer-input::-webkit-outer-spin-button {
+.timer-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -218,12 +206,11 @@ input {
 }
 
 article {
+  display: flex;
   width: 90%;
   background-color: #46424D;
   margin-bottom: 25px;
-  border-radius: 5px;
   padding: 2%;
-  display: flex;
   justify-content: space-between;
   border-radius: 5px;
   box-shadow: 5px 5px #26222d;
@@ -251,16 +238,6 @@ article {
   padding: 0;
 }
 
-.study-pipe {
-  background-color: #B3FD78;
-  outline:none;
-}
-.meditate-pipe {
-  background-color: #C278FD;
-}
-.exercise-pipe {
-  background-color: #FD8078;
-}
 
 .card-description {
   margin-top: 8px;
