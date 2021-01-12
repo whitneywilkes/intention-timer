@@ -1,267 +1,261 @@
 * {
-    margin: 0;
-    box-sizing: border-box;
-    font-family: montserrat;
-    color: #fff;
-}
-html, main, body {
-    height: 100%;
-    width: 100%;
-}
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat";
+  color: #fff;
+};
+
+html,
+main, 
+body {
+  height: 100%;
+  width: 100%;
+};
+
 /* **Header** */
 header {
-    background-color: #46424D;
-    height: 60px;
-}
-h1 {
-    padding: 15px 0;
-    color: #fff;
-    font-size: 1.5em;
-    font-weight: 300;
-    text-align: center;
-}
-main {
-    background-color: #2b2733;
+  height: 60px;
+  background-color: #46424D;
+};
 
-}
+h1 {
+  padding: 15px 0;
+  font-size: 1.5em;
+  font-weight: 300;
+  text-align: center;
+  color: #fff;
+};
+
+main {
+  background-color: #2b2733;
+};
+
 h2 {
-margin: 30px 30px 15px 30px;
-font-size: 24px;
-color: #CBC9CF;
-}
+  margin: 30px 30px 15px 30px;
+  font-size: 24px;
+  color: #CBC9CF;
+};
 
 /* **Section left** */
+
 .left-container, .right-container {
-    float: left;
-    height: 100%
-}
+  float: left;
+  height: 100%;
+};
 
 .left-container {
-    width: 65%;
-    font-size: 1.25em;
-    font-weight: 400;
-}
+  width: 65%;
+  font-size: 1.25em;
+  font-weight: 400;
+};
 
 form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    background-color: #46424D;
-    margin: 0 30px;
-    padding: 30px 100px;
-    height: 600px;
-    border-radius: 5px;
-    box-shadow: 5px 5px #26222d;
-}
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0 30px;
+  padding: 30px 100px;
+  border-radius: 5px;
+  box-shadow: 5px 5px #26222d;
+  background-color: #46424D;
+};
 
 #startActivityForm {
   justify-content: unset;
   align-items: center;
+};
 
-}
 .start-new-activity {
   display: flex;
   flex-direction: row;
-}
+};
 
 h3 {
   color:#CBC9CF;
   text-align: center;
   margin-top: 20px;
-}
+};
 
 .start-button {
+  height: 225px;
+  width: 225px; 
   margin-top: 60px;
   border-radius: 50%;
+  border: 3px solid white;
   font-size: 1.2em;
   background: transparent;
-  height: 225px;
-  width: 225px;
-  border: 3px solid white;
   color:#CBC9CF !important;
-}
+};
 
 .select-category {
-    margin-bottom: -30px;
-}
+  margin-bottom: -30px;
+};
 
 .button-container {
-    display: flex;
-    justify-content: space-between;
-}
+  display: flex;
+  justify-content: space-between;
+};
 
 button {
-    border-radius: 5px;
-    outline: none;
-}
+  border-radius: 5px;
+  outline: none;
+};
 
 .button {
-    background: transparent;
-    border: 1.5px solid #fff;
-    width: 175px;
-    padding: 10px;
-    font-size: .8em;
-    z-index: 5;
-}
+  width: 175px;
+  padding: 10px;
+  border: 2px solid #fff;
+  font-size: .8em;
+  background: transparent;
+};
 
 #studyButton:disabled, .study {
   border-color: #B3FD78;
   color: #B3FD78;
-}
+};
+
 #meditateButton:disabled, .meditate {
   border-color: #C278FD;
   color: #C278FD;
-}
+};
+
 #exerciseButton:disabled, .exercise {
   border-color: #FD8078;
   color: #FD8078;
-}
-input {
-    background: transparent;
-    width: 100%;
-    height: 45px;
-    border: none;
-    border-bottom: 2px solid #fff;
-}
+};
+
+input, input:active {
+  width: 100%;
+  height: 45px;
+  border: 0;
+  border-bottom: 1.5px solid #fff;
+  outline: none;
+  background: transparent;
+};
+
 .timer {
-    font-size: 3.25em;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    letter-spacing: 3px;
+  font-size: 3.25em;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  letter-spacing: 3px;
+};
+
+.error-line {
+  border-color: #EFB7EC;
 }
+
 .error-message, #categoryError{
   margin-top: -27px;
-  color: #EFB7EC;
   font-size: 0.7em;
-}
+  color: #EFB7EC;
+};
+
 #secondsError {
-    margin-left: 60%;
-}
+  margin-left: 60%;
+};
 
 .minutes-seconds-container {
-    display: flex;
-    justify-content: space-between;
-}
+  display: flex;
+  justify-content: space-between;
+};
+
 .minutes-seconds-container > p {
-    width: 40%;
-}
+  width: 40%;
+};
 
 .button-icon {
-    height: 25px;
-    width: auto;
-}
+  height: 25px;
+  width: auto;
+};
 
 .warning-icon {
   height: 15px;
   width: auto;
   padding-right: 6px;
-}
+};
 
 .start-activity-button {
-    color: #2b2733;
-    height: 40px;
-    margin-left: 70%;
-    font-size: large;
-    font-weight: 400;
-}
+  height: 40px;
+  margin-left: 70%;
+  font-size: .9em;
+  font-weight: 400;
+  color: #2b2733;
+};
 
 .log-button, .create-new-activity-button {
-    color: #2b2733;
-    height: 40px;
-    width: 225px;
-    font-size: large;
-    font-weight: 400;
-    margin-top: 35px;
-}
+  height: 40px;
+  width: 225px;
+  margin-top: 35px;
+  font-size: .9em;
+  font-weight: 400;
+  color: #2b2733;
+};
+
 .create-new-activity-button {
-  color:#2b2733;
   width: 325px
-}
+  color:#2b2733;
+};
 
 /* **Section right** */
-.right-container {
-    width: 35%;
-    border-left: 4px solid #46424D;
-}
-.right-container > p {
-    text-align: center;
-    line-height: 1.8em;
-    margin-top: 7%;
-    color: #CBC9CF;
-}
 
-/* active button settings */
-.study-active {
-  border-color: #B3FD78;
-  color: #B3FD78;
-}
-.meditate-active {
-  border-color: #C278FD;
-  color: #C278FD;
-}
-.exercise-active {
-  border-color: #FD8078;
-  color: #FD8078;
-}
-.timer-input::-webkit-inner-spin-button,
-.timer-input::-webkit-outer-spin-button {
+.right-container {
+  width: 35%;
+  border-left: 4px solid #46424D;
+};
+
+.right-container > p {
+  margin-top: 7%;
+  text-align: center;
+  line-height: 1.8em;
+  color: #CBC9CF;
+};
+
+.timer-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
+};
+
 .hidden {
-    display: none;
-}
+  display: none;
+};
 
 article {
-  width: 90%;
-  background-color: #46424D;
-  margin-bottom: 25px;
-  border-radius: 5px;
-  padding: 2%;
   display: flex;
+  width: 90%;
+  margin-bottom: 25px;
+  padding: 0%;
   justify-content: space-between;
-  border-radius: 5px;
   box-shadow: 5px 5px #26222d;
-}
+  background-color: #46424D;
+};
 
 .card-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
+};
 
 .card-title {
   font-weight: 400;
-}
+};
 
 .card-description {
   font-weight: 300;
   font-size: 0.9em;
-}
+};
 
 .card-category-indicator {
   height: 30px;
   width: 3px;
   padding: 0;
-}
-
-.study-pipe {
-  background-color: #B3FD78;
-  outline:none;
-}
-.meditate-pipe {
-  background-color: #C278FD;
-}
-.exercise-pipe {
-  background-color: #FD8078;
-}
+};
 
 .card-description {
   margin-top: 8px;
   color: #CBC9CF;
+};
 
-}
 .card-time {
   color: #CBC9CF;
-}
+};
