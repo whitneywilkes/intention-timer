@@ -33,21 +33,11 @@ var createNewActivityButton = document.querySelector('.create-new-activity-butto
 var userInputs = document.querySelectorAll('input')
 
 
-window.addEventListener('load', function() {
-  if (localStorage.length === 0) {
-    return
-  } else {
-    windowLoad()
-    addClass(defaultMessage)
-  }
-})
+window.addEventListener('load', displayLocalStorage)
 
 logButton.addEventListener("click", displayCard);
 startActivityButton.addEventListener("click", startActivity);
-createNewActivityButton.addEventListener("click", function(event) {
-  event.preventDefault();
-  createNewActivity();
-});
+createNewActivityButton.addEventListener("click", window.location.reload)
 
 
 startButton.addEventListener("click", function() {
@@ -155,19 +145,6 @@ function displayCard() {
     </article>`
 };
 
-function createNewActivity() {
-  addClass(logButton)
-  addClass(startNewActivityForm)
-  removeClass(defaultForm)
-  resetButtons()
-  startButton.disabled = false
-  startButton.innerText = "START"
-  for (var i = 0; i < userInputs.length; i++) {
-    userInputs[i].value = ""
-  };
-};
-
-
 
 function windowLoad() {
   var page = localStorage.getItem('savedArray')
@@ -192,4 +169,12 @@ function loadCard(thing) {
       </div>
     </article>`
   }
+}
+
+function displayLocalStorage() {
+  if (localStorage.length === 0) {
+    removeClass(defaultMessage)
+    return
+  }
+    windowLoad()
 }
