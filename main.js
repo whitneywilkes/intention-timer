@@ -26,7 +26,9 @@ var userInputs = document.querySelectorAll('input')
 window.addEventListener('load', displayLocalStorage);
 logButton.addEventListener("click", displayCard);
 startActivityButton.addEventListener("click", startActivity);
-createNewActivityButton.addEventListener("click", window.location.reload);
+createNewActivityButton.addEventListener("click", function() {
+  window.location.reload()
+})
 
 startButton.addEventListener("click", function() {
   currentActivity.startTimer();
@@ -40,7 +42,7 @@ selectActivityButton.addEventListener("click", function(event) {
 });
 
 timerContainer.addEventListener("keydown", function(event) {
-  var invalidCharacters = ["e", "+", "-"];
+  var invalidCharacters = ["e", "+", "-", "."];
   if (invalidCharacters.includes(event.key)) {
     event.preventDefault();
   }
@@ -67,7 +69,7 @@ function startActivity() {
 
 function showTimer() {
   removeClass(startActivityForm);
-  timer.innerText = `${currentActivity.minutes.padStart(2, '0')}:${currentActivity.seconds.padStart(2, '0')}`;
+  fixTime(currentActivity.minutes, currentActivity.seconds)
   activityHeader.innerText = 'Current Activity';
   userDescriptionInput.innerText = currentActivity.description;
   addClass(startButton, `${currentActivity.category.toLowerCase()}`);
@@ -117,13 +119,12 @@ function displayCard() {
   addClass(defaultMessage);
   removeClass(startNewActivityForm)
   addClass(startActivityForm)
-  currentActivity.completed = true;
   pastActivities.unshift(currentActivity)
   currentActivity.saveToStorage();
-  loadCard()
+  loadPastCards()
 };
 
-function loadCard() {
+function loadPastCards() {
   cardContainer.innerHTML = ""
   for (var i = 0; i < pastActivities.length; i++) {
     cardContainer.innerHTML +=
@@ -140,11 +141,11 @@ function loadCard() {
   };
 };
 
-function windowLoad() {
+function retrievePastActivities() {
   var page = localStorage.getItem('savedArray');
   var info = JSON.parse(page);
   pastActivities = info;
-  loadCard();
+  loadPastCards();
 };
 
 function displayLocalStorage() {
@@ -152,5 +153,28 @@ function displayLocalStorage() {
     removeClass(defaultMessage);
     return;
   }
-    windowLoad();
+    retrievePastActivities();
 };
+
+
+function displayTime(minutes, seconds) {
+  startButton.disabled = true
+  var countDownTimer = setInterval(function() {
+      if (seconds === 0 && minutes === 0) {
+        startButton.innerText = "COMPLETE!";
+        removeClass(logButton);
+        currentActivity.markComplete()
+        clearInterval(countDownTimer)
+      } else if (seconds === 0) {
+        minutes--
+        seconds = 59
+      } else {
+        seconds--
+      }
+      fixTime(minutes, seconds)
+    }, 1000);
+}
+
+function fixTime(minutes, seconds) {
+  timer.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2 , '0')}`
+}
