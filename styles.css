@@ -33,7 +33,12 @@ color: #CBC9CF;
 /* **Section left** */
 .left-container, .right-container {
     float: left;
-    height: 100%
+    height: 100%;
+    overflow: auto;
+}
+
+.right-container::-webkit-scrollbar {
+  display: none;
 }
 
 .left-container {

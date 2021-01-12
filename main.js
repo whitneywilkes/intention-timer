@@ -32,12 +32,12 @@ var startNewActivityForm = document.querySelector('.start-new-activity')
 var createNewActivityButton = document.querySelector('.create-new-activity-button')
 var userInputs = document.querySelectorAll('input')
 
+
+window.addEventListener('load', displayLocalStorage)
+
 logButton.addEventListener("click", displayCard);
 startActivityButton.addEventListener("click", startActivity);
-createNewActivityButton.addEventListener("click", function(event){
-  event.preventDefault();
-  createNewActivity();
-});
+createNewActivityButton.addEventListener("click", window.location.reload)
 
 
 startButton.addEventListener("click", function() {
@@ -47,7 +47,7 @@ startButton.addEventListener("click", function() {
 selectActivityButton.addEventListener("click", function(event) {
   var button = event.target.closest('button');
   resetButtons();
-  button.disabled = true ;
+  button.disabled = true;
   button.firstElementChild.src = `./assets/${button.value.toLowerCase()}-active.svg`;
 });
 
@@ -99,7 +99,7 @@ function checkForErrors() {
       removeClass(errorMessages[i]);
       return true;
     }
-  } 
+  }
 }
 
 function hideErrorMessages() {
@@ -118,8 +118,8 @@ function addClass(element, className) {
 }
 
 function resetButtons() {
-  for(var i = 0; i < activityButtons.length; i++) {
-    activityButtons[i].disabled = false ;
+  for (var i = 0; i < activityButtons.length; i++) {
+    activityButtons[i].disabled = false;
     activityButtons[i].firstElementChild.src = activityButtons[i].firstElementChild.src.replace('-active', "")
   };
 }
@@ -129,28 +129,52 @@ function displayCard() {
   var color = currentActivity.category.toLowerCase()
   removeClass(startNewActivityForm)
   addClass(startActivityForm)
+  currentActivity.completed = true;
   pastActivities.push(currentActivity)
-  cardContainer.innerHTML += 
-   `<article>
+  currentActivity.saveToStorage();//testing this
+  cardContainer.innerHTML +=
+    `<article>
       <div class="card-section">
         <p class="card-title">${currentActivity.category}</p>
         <p class="card-time">${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</p>
-         <p class="card-description">${currentActivity.description}</p>
+        <p class="card-description">${currentActivity.description}</p>
       </div>
       <div class="card-section">
       <button class="card-category-indicator ${color}"type="button" name="button"></button>
       </div>
     </article>`
+};
+
+
+function windowLoad() {
+  var page = localStorage.getItem('savedArray')
+  var info = JSON.parse(page)
+  pastActivities = info
+
+  loadCard(pastActivities)
 }
 
-function createNewActivity() {
-  addClass(logButton)
-  addClass(startNewActivityForm)
-  removeClass(defaultForm)
-  resetButtons()
-  startButton.disabled = false
-  startButton.innerText = "START"
-  for (var i = 0; i < userInputs.length; i++){
-    userInputs[i].value = ""
+function loadCard(thing) {
+  for (var i = 0; i < thing.length; i++) {
+    var color = thing[i].category.toLowerCase()
+    cardContainer.innerHTML +=
+      `<article>
+      <div class="card-section">
+        <p class="card-title">${thing[i].category}</p>
+        <p class="card-time">${thing[i].minutes} MIN ${thing[i].seconds} SECONDS</p>
+        <p class="card-description">${thing[i].description}</p>
+      </div>
+      <div class="card-section">
+      <button class="card-category-indicator ${color}"type="button" name="button"></button>
+      </div>
+    </article>`
   }
+}
+
+function displayLocalStorage() {
+  if (localStorage.length === 0) {
+    removeClass(defaultMessage)
+    return
+  }
+    windowLoad()
 }
