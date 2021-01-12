@@ -8,21 +8,12 @@ var accomplishInputField = document.querySelector(".accomplish-input");
 var minInputField = document.querySelector("#minutesInput");
 var secInputField = document.querySelector("#secondsInput");
 var startActivityButton = document.querySelector(".start-activity-button");
-var studyIcon = document.querySelector("#study-icon");
-var meditateIcon = document.querySelector("#meditate-icon");
-var exerciseIcon = document.querySelector("#exercise-icon");
-var studyButton = document.querySelector("#studyButton");
-var meditateButton = document.querySelector("#meditateButton");
-var exerciseButton = document.querySelector("#exerciseButton");
 var defaultForm = document.querySelector('#defaultForm');
 var activityHeader = document.querySelector('#activityType');
 var startActivityForm = document.querySelector('#startActivityForm');
 var userDescriptionInput = document.querySelector('#userDescriptionInput');
 var startButton = document.querySelector('.start-button');
 var categoryError = document.querySelector('#categoryError');
-var descriptionError = document.querySelector('#descriptionError');
-var minutesError = document.querySelector('#minutesError');
-var secondsError = document.querySelector('#secondsError');
 var errorMessages = document.querySelectorAll('.error-message');
 var timer = document.querySelector('#timerInsert');
 var logButton = document.querySelector('.log-button');
@@ -32,13 +23,10 @@ var startNewActivityForm = document.querySelector('.start-new-activity')
 var createNewActivityButton = document.querySelector('.create-new-activity-button')
 var userInputs = document.querySelectorAll('input')
 
-
-window.addEventListener('load', displayLocalStorage)
-
+window.addEventListener('load', displayLocalStorage);
 logButton.addEventListener("click", displayCard);
 startActivityButton.addEventListener("click", startActivity);
-createNewActivityButton.addEventListener("click", window.location.reload)
-
+createNewActivityButton.addEventListener("click", window.location.reload);
 
 startButton.addEventListener("click", function() {
   currentActivity.startTimer();
@@ -126,55 +114,42 @@ function resetButtons() {
 
 function displayCard() {
   addClass(defaultMessage);
-  var color = currentActivity.category.toLowerCase()
   removeClass(startNewActivityForm)
   addClass(startActivityForm)
   currentActivity.completed = true;
   pastActivities.push(currentActivity)
-  currentActivity.saveToStorage();//testing this
-  cardContainer.innerHTML +=
-    `<article>
-      <div class="card-section">
-        <p class="card-title">${currentActivity.category}</p>
-        <p class="card-time">${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</p>
-        <p class="card-description">${currentActivity.description}</p>
-      </div>
-      <div class="card-section">
-      <button class="card-category-indicator ${color}"type="button" name="button"></button>
-      </div>
-    </article>`
+  currentActivity.saveToStorage();
+  loadCard()
 };
 
-
-function windowLoad() {
-  var page = localStorage.getItem('savedArray')
-  var info = JSON.parse(page)
-  pastActivities = info
-
-  loadCard(pastActivities)
-}
-
-function loadCard(thing) {
-  for (var i = 0; i < thing.length; i++) {
-    var color = thing[i].category.toLowerCase()
+function loadCard() {
+  cardContainer.innerHTML = ""
+  for (var i = 0; i < pastActivities.length; i++) {
     cardContainer.innerHTML +=
       `<article>
       <div class="card-section">
-        <p class="card-title">${thing[i].category}</p>
-        <p class="card-time">${thing[i].minutes} MIN ${thing[i].seconds} SECONDS</p>
-        <p class="card-description">${thing[i].description}</p>
+        <p class="card-title">${pastActivities[i].category}</p>
+        <p class="card-time">${pastActivities[i].minutes} MIN ${pastActivities[i].seconds} SECONDS</p>
+        <p class="card-description">${pastActivities[i].description}</p>
       </div>
       <div class="card-section">
-      <button class="card-category-indicator ${color}"type="button" name="button"></button>
+      <button class="card-category-indicator ${pastActivities[i].category.toLowerCase()}"type="button" name="button"></button>
       </div>
     </article>`
-  }
-}
+  };
+};
+
+function windowLoad() {
+  var page = localStorage.getItem('savedArray');
+  var info = JSON.parse(page);
+  pastActivities = info;
+  loadCard();
+};
 
 function displayLocalStorage() {
   if (localStorage.length === 0) {
-    removeClass(defaultMessage)
-    return
+    removeClass(defaultMessage);
+    return;
   }
-    windowLoad()
-}
+    windowLoad();
+};
