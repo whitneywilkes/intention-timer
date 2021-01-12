@@ -28,4 +28,4 @@ This app is modeled after a Turing School of Software & Design project *Insight 
 ### *Fork down this repository and run the following in your terminal*
 ```
 $ git clone git@github.com:whitneywilkes/whats-for-dinner.git
-```
+``` 
